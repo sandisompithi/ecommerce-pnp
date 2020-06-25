@@ -12,6 +12,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms'
 import {authInterceptorProviders} from './_helpers/auth.interceptor'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
