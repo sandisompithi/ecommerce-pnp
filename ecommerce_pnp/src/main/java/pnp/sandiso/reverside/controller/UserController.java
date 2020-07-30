@@ -32,7 +32,7 @@ import pnp.sandiso.reverside.payload.response.MessageResponse;
 import pnp.sandiso.reverside.repository.RoleRepository;
 import pnp.sandiso.reverside.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/auth")
 public class UserController {
