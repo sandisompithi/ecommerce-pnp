@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms'
 import {authInterceptorProviders} from './_helpers/auth.interceptor'
 import { HttpClientModule } from '@angular/common/http';
+import { AddProductComponent } from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    AddProductComponent,
+    UpdateProductComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

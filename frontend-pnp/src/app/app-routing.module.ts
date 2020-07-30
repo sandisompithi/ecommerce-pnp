@@ -10,6 +10,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'admin/add', component: AddProductComponent },
+  { path: 'admin/update/:id', component: UpdateProductComponent},
+  { path: 'admin/add/category', component: CategoryComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

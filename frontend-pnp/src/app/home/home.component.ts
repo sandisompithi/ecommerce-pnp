@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { Products } from '../model/products'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +10,17 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  content: string;
+  products: Observable<Products[]>;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getPublicContent().subscribe(
       data => {
-        this.content = data;
+        this.products = data;
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        this.products = JSON.parse(err.error).message;
       }
     );
   }

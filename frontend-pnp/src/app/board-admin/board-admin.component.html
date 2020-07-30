@@ -1,6 +1,25 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Products List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.description}}</td>
+          <td>R {{product.price}}</td>
+          <td><button (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+              <button (click)="updateProduct(product.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-  
