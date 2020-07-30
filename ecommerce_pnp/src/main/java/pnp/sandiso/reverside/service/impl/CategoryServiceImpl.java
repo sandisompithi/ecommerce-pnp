@@ -1,13 +1,10 @@
 package pnp.sandiso.reverside.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pnp.sandiso.reverside.model.Category;
 import pnp.sandiso.reverside.repository.CategoryRepository;
 import pnp.sandiso.reverside.service.CategoryService;
-import pnp.sandiso.reverside.service.ProductService;
 
 import java.util.List;
 
