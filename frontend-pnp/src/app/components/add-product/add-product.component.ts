@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../model/category';
-import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
+import { Products } from 'src/app/model/products';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class AddProductComponent implements OnInit {
 
-  category: Category = new Category();
+  products: Products = new Products();
   submitted = false;
 
   constructor(private userService: UserService, private router: Router) { }
@@ -18,18 +18,18 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  newCategory(){
+  newProduct(): void {
     this.submitted = false;
-    this.category = new Category();
+    this.products = new Products();
   }
 
   save() {
-    this.userService.createCategory(this.category)
+    this.userService.createProduct(this.products)
       .subscribe(
         data => console.log(data),
         error => console.log(error)
-      );
-    this.category = new Category();
+    );
+    this.products = new Products();
     this.gotoList();
   }
 
@@ -41,5 +41,4 @@ export class CategoryComponent implements OnInit {
   gotoList() {
     this.router.navigate(['/admin']);
   }
-
 }

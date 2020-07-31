@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { Products } from '../model/products'
 import { Observable } from 'rxjs';
+import { Products } from 'src/app/model/products';
+import { UserService } from 'src/app/_services/user.service';
+import { Category } from 'src/app/model/category';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   products: Observable<Products[]>;
+  categories: Observable<Category[]>;
 
   constructor(private userService: UserService) { }
 
@@ -23,6 +25,14 @@ export class HomeComponent implements OnInit {
         this.products = JSON.parse(err.error).message;
       }
     );
-  }
 
+    this.userService.getAllCategories().subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

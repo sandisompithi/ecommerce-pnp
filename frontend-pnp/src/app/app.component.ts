@@ -16,8 +16,6 @@ export class AppComponent implements OnInit{
   showModeratorBoard = false;
   username: string;
 
-  categories: Observable<Category[]>;
-
   constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
 
   ngOnInit() {
@@ -32,18 +30,6 @@ export class AppComponent implements OnInit{
 
       this.username = user.username;
     }
-    this.getCategories();
-  }
-
-  getCategories() {
-    this.userService.getAllCategories().subscribe(
-      data => {
-        this.categories = data
-      },
-      err => {
-        this.categories = JSON.parse(err.error).message;
-      }
-    );
   }
 
   logout() {

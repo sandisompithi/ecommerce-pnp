@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
-import { Products } from '../model/products';
 import { Router } from '@angular/router';
+import { Products } from 'src/app/model/products';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-board-admin',

@@ -20,14 +20,6 @@
 		<li class="nav-item">
 		  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
 		</li>
-		<li class="nav-item">
-			<div class="dropdown">
-				<button class="dropbtn">Category</button>
-				<div class="dropdown-content" *ngFor="let category of categories">
-					<a href="/home" class="nav-link" routerLink="home">{{ category.name }}</a>
-				</div>
-			</div>
-		</li>
 	  </ul>
   
 	  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
