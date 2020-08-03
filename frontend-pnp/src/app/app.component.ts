@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
-import { Category } from './model/category';
 import { Observable } from 'rxjs';
 import { UserService } from './_services/user.service';
+import { CategoryService } from './_services/category.service';
+import { Category } from './model/category';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,11 @@ export class AppComponent implements OnInit{
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  categories: any = [];
 
-  constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService, 
+      private categoryService: CategoryService) {
+   }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -30,6 +34,19 @@ export class AppComponent implements OnInit{
 
       this.username = user.username;
     }
+    this.getCategories();
+  }
+
+  getCategories(){
+    this.categoryService.getCategories()
+      .subscribe(data => {
+        this.categories = data;
+        this.categories = Array.of(this.categories);
+        console.log(data);
+      }, error => {
+        this.categories = error;
+        console.log(error);
+      });
   }
 
   logout() {

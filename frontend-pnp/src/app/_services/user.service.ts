@@ -27,14 +27,6 @@ export class UserService {
     return this.http.get(API_URL + 'admin');
   }
 
-  getAllCategories(): Observable<any> {
-    return this.http.get(API_URL + 'category');
-  }
-
-  getCategoryById(id: number): Observable<any> {
-    return this.http.get(API_URL + 'category/' + id);
-  }
-
   getProduct(id: number): Observable<any> {
     return this.http.get(API_URL + 'product/' + id);
   }

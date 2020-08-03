@@ -12,7 +12,7 @@
 			<a href="/admin/add/category" class="nav-link" routerLink="admin/add/category">Add Category</a>
 		</li>
 		<li class="nav-item" *ngIf="showAdminBoard">
-			<a href="/admin/add" class="nav-link" routerLink="admin/add">Add Item</a>
+			<a href="/admin/add/product" class="nav-link" routerLink="admin/add/product">Add Item</a>
 		</li>
 		<li class="nav-item" *ngIf="showModeratorBoard">
 		  <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
@@ -20,8 +20,16 @@
 		<li class="nav-item">
 		  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
 		</li>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Categories
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngFor="let c of categories">
+				<a class="dropdown-item" href="#">{{c.categoryNames}}</a>
+			</div>
+		</li>
 	  </ul>
-  
 	  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
 		<li class="nav-item">
 		  <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
