@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  categories: any = [];
+  categories: Observable<Category[]>;
 
   constructor(private tokenStorageService: TokenStorageService, private userService: UserService, 
       private categoryService: CategoryService) {
@@ -40,8 +40,8 @@ export class AppComponent implements OnInit{
   getCategories(){
     this.categoryService.getCategories()
       .subscribe(data => {
-        this.categories = data;
-        this.categories = Array.of(this.categories);
+        let response = JSON.parse(JSON.stringify(data));
+        this.categories = response.data;
         console.log(data);
       }, error => {
         this.categories = error;
