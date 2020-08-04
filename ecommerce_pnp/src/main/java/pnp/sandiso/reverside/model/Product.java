@@ -1,7 +1,5 @@
 package pnp.sandiso.reverside.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.Arrays;
 
@@ -12,9 +10,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-	@ManyToOne()
-	@JoinColumn(name = "category_id")
-	@JsonIgnoreProperties(value = "product")
+	@ManyToOne
+	@JoinColumn
 	private Category category;
 
 	private Byte[] image;
