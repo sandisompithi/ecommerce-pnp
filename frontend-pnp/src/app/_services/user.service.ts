@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_URL = 'http://localhost:8080/api/home/';
+const ADMIN_URL = 'http://localhost:8080/api/admin/';
 
 @Injectable({
   providedIn: 'root'
@@ -32,19 +33,19 @@ export class UserService {
   }
 
   createCategory(category: Object): Observable<Object> {
-    return this.http.post(API_URL + 'admin/add/category', category);
+    return this.http.post(ADMIN_URL + 'add/category', category);
   }
 
   createProduct(product: Object): Observable<Object> {
-    return this.http.post(API_URL + 'admin/add/product', product);
+    return this.http.post(ADMIN_URL + 'add/product', product);
   }
 
   updateProduct(id: number, value: any): Observable<Object> {
-    return this.http.put(API_URL + 'admin/update/product/' + id, value);
+    return this.http.put(ADMIN_URL + 'update/product/' + id, value);
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(API_URL + 'admin/delete/product/' + id)
+    return this.http.delete(ADMIN_URL + 'delete/product/' + id)
   }
 
 }
