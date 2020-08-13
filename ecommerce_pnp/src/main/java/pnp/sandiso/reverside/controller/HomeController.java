@@ -51,12 +51,6 @@ public class HomeController {
 		return "User Content.";
 	}
 
-	@GetMapping("/mod")
-	@PreAuthorize("hasRole('MODERATOR')")
-	public String moderatorAccess() {
-		return "Moderator Board.";
-	}
-
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
 	public String adminAccess() {
@@ -78,40 +72,6 @@ public class HomeController {
 		return ResponseEntity.status(HttpStatus.OK).body(new Response(product1, new Date()));
 	}
 
-	@PostMapping("/admin/add/category")
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Response> postCategory(@RequestBody Category category) {
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(new Response(categoryService.save(category), new Date()));
-	}
-
-	@PostMapping("/admin/add/product")
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Response> postProduct(@RequestBody Product product) {
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(new Response(productService.save(product), new Date()));
-	}
-
-	@PutMapping("/admin/update/product/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Response> putProduct(@PathVariable(value = "id") Integer productId,
-											   @Valid @RequestBody Product product) throws Exception {
-		Product product1 = productService.geProduct(productId);
-
-		product1.setDescription(product.getDescription());
-		product1.setPrice(product.getPrice());
-
-		final Product updatedProduct = productService.save(product1);
-
-		return ResponseEntity.status(HttpStatus.OK).body(new Response(updatedProduct, new Date()));
-	}
-
-	@DeleteMapping(value = "/admin/delete/product/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Response> deleteProduct(@PathVariable(value = "id") Integer id) throws Exception {
-		productService.delete(id);
-		return ResponseEntity.status(HttpStatus.OK).body(new Response(true, new Date()));
-	}
 
 	@GetMapping(value = "/category")
 	public ResponseEntity<Response> getAllCategories() {
